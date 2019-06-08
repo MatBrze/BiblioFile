@@ -41,7 +41,7 @@ class ReaderView(View):
         paginator = Paginator(lines, LINES_PER_PAGE)
         page = request.GET.get('page')
         book_page = paginator.get_page(page)
-        return render(request, 'reader.html', {'book_page': book_page })
+        return render(request, 'reader.html', {'book_page': book_page})
 
 
 class BookListView(View):
