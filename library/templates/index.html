@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container-fluid bg-light">
+        <div id="blogCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#blogCarousel" data-slide-to="1"></li>
+                <li data-target="#blogCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 6 %}">
+                                <img src="{% static "covers/1.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 7 %}">
+                                <img src="{% static "covers/2.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 11 %}">
+                                <img src="{% static "covers/3.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 14 %}">
+                                <img src="{% static "covers/4.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 10 %}">
+                                <img src="{% static "covers/5.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 8 %}">
+                                <img src="{% static "covers/6.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 12 %}">
+                                <img src="{% static "covers/7.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 9 %}">
+                                <img src="{% static "covers/8.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 16 %}">
+                                <img src="{% static "covers/9.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 20 %}">
+                                <img src="{% static "covers/10.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 18 %}">
+                                <img src="{% static "covers/11.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 23 %}">
+                                <img src="{% static "covers/12.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 24 %}">
+                                <img src="{% static "covers/13.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 25 %}">
+                                <img src="{% static "covers/14.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 15 %}">
+                                <img src="{% static "covers/15.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 17 %}">
+                                <img src="{% static "covers/16.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 19 %}">
+                                <img src="{% static "covers/17.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{% url 'book-details' 21 %}">
+                                <img src="{% static "covers/18.jpg" %}" alt="Image" style="max-height:300px;">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <section>
+        <div class="container">
+            <div class="row mbr-justify-content-center">
+                <div class="col-lg-6 mbr-col-md-10">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <span class="mbr-iconfont fa-volume-up fa"></span>
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5 text-center">Polecana
+                                Książka</h2>
+                            <a href="{% url 'book-details' random_book.pk %}">
+                                <div class="image-wrapper float-left pr-3">
+                                    <img src="/{{ random_book.cover.url }}" style="max-height:300px;" alt="cover"/>
+                                </div>
+                            </a>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">{{ random_book.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mbr-col-md-10">
+                    <div class="wrap">
+                        <div class="ico-wrap">
+                            <span class="mbr-iconfont fa-calendar fa"></span>
+                        </div>
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5 text-center">Polecany
+                                <span>Autor</span>
+                            </h2>
+                            <a href="{% url 'author-details' random_author.pk %}">
+                                <div class="image-wrapper float-left pr-3">
+                                    <img src="/{{ random_author.photo.url }}" style="max-height:300px;" alt="photo"/>
+                                </div>
+                            </a>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">{{ short_desc }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

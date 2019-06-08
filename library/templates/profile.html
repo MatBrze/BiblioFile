@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <h3>Półka użytownika {{ user.username }}:</h3>
+    </div>
+    {% for book in books %}
+        <div class="gallery container">
+            <a href="{% url 'book-details' book.book.pk %}">
+                <img src="/{{ book.book.cover.url }}" height="400" width=250"/>
+            </a>
+        </div>
+    {% endfor %}
+    <div class="clear"></div>
+{% endblock %}

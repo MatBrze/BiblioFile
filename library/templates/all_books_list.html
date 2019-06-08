@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="form-group">
+            <a class="btn btn-outline-success my-2 my-sm-0 float-right" href="{% url 'book-list-li' %}">Widok Listy</a>
+        </div>
+    </div>
+    <div class="container">
+        <h3>Dostępne Tytuły:</h3>
+    </div>
+    {% for book in books %}
+        <div class="gallery">
+            <a href="{% url 'book-details' book.pk %}">
+                <img src="/{{ book.cover.url }}" height="400" width=250"/>
+            </a>
+        </div>
+    {% endfor %}
+    <div class="clear"></div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base_reader.html' %}
+{% block content %}
+    {% load static %}
+    <div class="container">
+        <div class="text-center">
+        <span class="step-links">
+            {% if book_page.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ book_page.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ book_page.number }} of {{ book_page.paginator.num_pages }}.
+            </span>
+            {% if book_page.has_next %}
+                <a href="?page={{ book_page.next_page_number }}">next</a>
+                <a href="?page={{ book_page.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <div class="read">
+            {% for page in book_page %}
+                {{ page }}<br>
+            {% endfor %}
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="text-center">
+        <span class="step-links">
+            {% if book_page.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ book_page.previous_page_number }}">previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ book_page.number }} of {{ book_page.paginator.num_pages }}.
+            </span>
+            {% if book_page.has_next %}
+                <a href="?page={{ book_page.next_page_number }}">next</a>
+                <a href="?page={{ book_page.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+        </div>
+    </div>
+{% endblock %}

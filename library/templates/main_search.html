@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <h3>Wyniki wyszukiwania:</h3>
+        {% if books %}
+            <ul class="list-group">
+                {% for book in books %}
+                    <li class="list-group-item">
+                        <a href="{% url 'book-details' book.pk %}">
+                            {{ book.title }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% if authors %}
+            <ul class="list-group">
+                {% for author in authors %}
+                    <li class="list-group-item">
+                        <a href="{% url 'author-details' author.pk %}">
+                            {{ author.surname }} {{ author.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% if names %}
+            <ul class="list-group">
+                {% for name in names %}
+                    <li class="list-group-item">
+                        <a href="{% url 'author-details' name.pk %}">
+                            {{ name.name }} {{ name.surname }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}

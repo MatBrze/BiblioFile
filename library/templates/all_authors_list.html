@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/stylesheet.css' %}">
+
+
+{% block content %}
+    <div class="container">
+        <div class="form-group">
+            <a class="btn btn-outline-success my-2 my-sm-0 float-right" href="{% url 'author-list-li' %}">Widok
+                Listy</a>
+        </div>
+    </div>
+    <div class="container">
+        <h3>Dostępnni Autorzy:</h3>
+    </div>
+    {% for author in authors %}
+        <div class="gallery">
+            <a href="{% url 'author-details' author.pk %}">
+                <img src="/{{ author.photo.url }}" alt="photo" height="330"/>
+            </a>
+
+        </div>
+    {% endfor %}
+    <div class="clear"></div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="container">
+            <div class="form-group">
+                <a class="btn btn-outline-success my-2 my-sm-0 float-right" href="{% url 'author-list-li' %}">Lista
+                    Autorów</a>
+            </div>
+        </div>
+        <div class="container">
+            <h2 class="text-center"> {{ author.name }} {{ author.surname }}</h2>
+            <div class="image-wrapper float-left pr-3">
+                <img src="/{{ author.photo.url }}" alt="photo" height="400"/>
+            </div>
+            <div class="single-post-content-wrapper p-3">
+                <p> {{ author.biography }}</p>
+            </div>
+        </div>
+        <hr class="line">
+        <p>Dostępne tytuły: </p>
+        <div class="container">
+            <ul>
+                {% for book in books %}
+                    <li>
+                        <a href="{% url 'book-details' book.pk %}">
+                            {{ book.title }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <hr class="line">
+{% endblock %}

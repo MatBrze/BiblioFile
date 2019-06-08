@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <article class="row single-post mt-5 no-gutters">
+            <div class="col-md-10">
+                <div class="image-wrapper float-left pr-3">
+                    <img src="/{{ book.cover.url }}" height="650" width=450" alt="cover"/>
+                </div>
+                <div class="single-post-content-wrapper p-3">
+                    Tytuł: {{ book.title }}
+                    <br>
+                    Autor: {{ book.authors.get }}
+                    <br>
+                    <br>
+                    <br>
+                    {{ book.description }}
+                </div>
+                <div class="container">
+                    <div class="form-group">
+                        <a class="btn btn-outline-success my-2 my-sm-0 float-right  mr-3 "
+                           href="{% url 'author-details' book.authors.get.pk %}">O autorze</a>
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                    <div class="container">
+                        <div class="form-group">
+                            <a class="btn btn-outline-success my-2 my-sm-0 float-right  mr-3 " href="#"
+                               onclick="window.open('{% url 'reader' book.pk %}', 'Czytnik', 'height=800,width=700');">Czytaj</a>
+                        </div>
+                    </div>
+                    {% if not shelf_book %}
+                        <div>
+                            <div class="form-group">
+                                <a class="btn btn-outline-success my-2 my-sm-0 float-right  mr-3 "
+                                   href="{% url 'add-profile' book.pk %}">Dodaj na półkę
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if shelf_book %}
+                        <div>
+                            <div class="form-group">
+                                <a class="btn btn-outline-success my-2 my-sm-0 float-right  mr-3 "
+                                   href="{% url 'delete-profile' book.pk %}">Usuń
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </article>
+    </div>
+{% endblock %}
