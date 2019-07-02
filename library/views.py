@@ -9,7 +9,6 @@ from library.models import Book, Author, Shelf
 from .forms import UserRegisterForm, ContactForm
 
 from random import randint
-# Create your views here.
 
 
 class MainView(View):
@@ -64,8 +63,7 @@ class BookDetailsView(LoginRequiredMixin, View):
 
     def get(self, request, book_id):
         book = models.Book.objects.get(pk=book_id)
-        current_user = request.user
-        shelf_book = Shelf.objects.filter(user=current_user).filter(book=book)
+        shelf_book = Shelf.objects.filter(user=request.user).filter(book=book)
         ctx = {
             'book': book,
             'shelf_book': shelf_book
@@ -151,8 +149,7 @@ class ContactView(View):
 class ProfileView(LoginRequiredMixin, View):
 
     def get(self, request):
-        current_user = request.user
-        books = Shelf.objects.filter(user=current_user).distinct()
+        books = Shelf.objects.filter(user=request.user).distinct()
         ctx = {'books': books}
         return render(request, 'profile.html', ctx)
 
@@ -178,7 +175,7 @@ class DeleteFromProfileView(View):
         book = models.Book.objects.get(pk=book_id)
         current_user = request.user
         shelf_book = Shelf.objects.filter(user=current_user).filter(book=book)
-        instance = models.Shelf.objects.get(book=book)
+        instance = models.Shelf.objects.get(book=book, user=current_user)
         instance.delete()
         ctx = {
             'shelf_book': shelf_book,
