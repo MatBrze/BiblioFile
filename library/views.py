@@ -3,22 +3,16 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import View
 from django.core.paginator import Paginator
-
 from library import models
 from library.models import Book, Author, Shelf
 from .forms import UserRegisterForm, ContactForm
 
-from random import randint
-
 
 class MainView(View):
+
     def get(self, request):
-        books = models.Book.objects.all()
-        random_number = randint(0, len(books)-1)
-        random_book = books[random_number]
-        authors = models.Author.objects.all()
-        random_author_number = randint(0, len(authors)-1)
-        random_author = authors[random_author_number]
+        random_book = models.Book.objects.order_by('?').first()
+        random_author = models.Author.objects.order_by('?').first()
         short_desc = random_author.biography[:1000] + '...'
         ctx = {
             "random_book": random_book,
@@ -143,6 +137,7 @@ class ContactView(View):
             form.save()
             messages.success(request, f'Wiadomość przesłana')
             return redirect('contact')
+
         return render(request, 'contact.html', {'form': form})
 
 
