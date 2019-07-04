@@ -13,7 +13,7 @@ class MainView(View):
     def get(self, request):
         random_book = models.Book.objects.order_by('?').first()
         random_author = models.Author.objects.order_by('?').first()
-        short_desc = random_author.biography[:1000] + '...'
+        short_desc = random_author.biography
         ctx = {
             "random_book": random_book,
             "random_author": random_author,
